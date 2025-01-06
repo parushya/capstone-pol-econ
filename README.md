@@ -1,1 +1,2 @@
-# capstone-pol-econ
+# Capstone Political Economy
+
