@@ -54,7 +54,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -77,9 +97,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -196,18 +213,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#why-programming-or-coding" id="toc-why-programming-or-coding" class="nav-link active" data-scroll-target="#why-programming-or-coding">Why Programming or Coding?</a></li>
-  <li><a href="#r-and-rstudio" id="toc-r-and-rstudio" class="nav-link" data-scroll-target="#r-and-rstudio">R and RStudio</a></li>
-  <li><a href="#basics" id="toc-basics" class="nav-link" data-scroll-target="#basics">Basics</a></li>
-  <li><a href="#objects-datatypes-and-data-structures" id="toc-objects-datatypes-and-data-structures" class="nav-link" data-scroll-target="#objects-datatypes-and-data-structures">Objects, Datatypes, and Data Structures</a>
+  <li><a href="#guidelines" id="toc-guidelines" class="nav-link" data-scroll-target="#guidelines">Guidelines</a></li>
+  <li><a href="#annotatating-code" id="toc-annotatating-code" class="nav-link" data-scroll-target="#annotatating-code">Annotatating Code</a></li>
+  <li><a href="#file-management-and-workflow" id="toc-file-management-and-workflow" class="nav-link" data-scroll-target="#file-management-and-workflow">File Management and Workflow</a>
   <ul class="collapse">
-  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists">Lists</a></li>
+  <li><a href="#understanding-absolute-and-relative-paths" id="toc-understanding-absolute-and-relative-paths" class="nav-link" data-scroll-target="#understanding-absolute-and-relative-paths">Understanding Absolute and Relative Paths</a></li>
+  <li><a href="#standardized-folder-and-file-structure" id="toc-standardized-folder-and-file-structure" class="nav-link" data-scroll-target="#standardized-folder-and-file-structure">Standardized Folder and File Structure</a></li>
   </ul></li>
-  <li><a href="#file-management-and-workflow" id="toc-file-management-and-workflow" class="nav-link" data-scroll-target="#file-management-and-workflow">File Management and Workflow</a></li>
-  <li><a href="#r-projects" id="toc-r-projects" class="nav-link" data-scroll-target="#r-projects">R Projects</a></li>
-  <li><a href="#here-package" id="toc-here-package" class="nav-link" data-scroll-target="#here-package"><code>here</code> package</a></li>
-  <li><a href="#folder-structure" id="toc-folder-structure" class="nav-link" data-scroll-target="#folder-structure">Folder Structure</a></li>
-  <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
-  <li><a href="#additional-links" id="toc-additional-links" class="nav-link" data-scroll-target="#additional-links">Additional Links</a></li>
   </ul>
 </nav>
     </div>
@@ -238,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>There are a lot of fancy answers to it. But the key idea is that you want to be lazy about repetitive tasks (<em>MBAs</em> call it being “productive”).</p>
 <p>Many tasks - data cleaning, wrangling, visualization, and statistical analysis - require you to do them many times. Moreover, you would want to be able to reproduce and replicate your thinking about all of the tasks mentioned above on many different datasets and sometimes even on the same dataset after some time.</p>
 <p>Coding is about formalizing your thinking about how you treat the data and automating the formalization task to be done repetitively. It improves efficiency, enhances reproducibility, and boosts creativity when it comes to finding new patterns in your data.</p>
-<p>Guidelines for data and statistical analyses:<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Benchmarks for reproducible data and statistical analyses:<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <ol type="1">
 <li><strong>Accuracy</strong>: Write a code that reduces the chances of making an error and lets you catch one if it occurs.</li>
 <li><strong>Efficiency</strong>: If you are doing it twice, see the pattern of your decision-making and formalize it in your code. <em>Difference between Excel and coding</em></li>
@@ -249,508 +261,191 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Public Good</strong>: Research is a public good. And the code allows your research to be truly accessible. This means you write a code that anyone else who understands the language can read, reuse, and recreate without you being present. We essentially ensure that by writing a readable and ideally publicly accessible code.</li>
 </ol>
 </section>
-<section id="r-and-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="r-and-rstudio">R and RStudio</h2>
-<p>R is a free open-source statistical programming language. We generally use R through RStudio which is an integrated development environment (IDE). Essentially, it is the graphic user interface that allows us to use R efficiently. It has point-and-click functionality also (which we would not use a lot).</p>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="rstudio.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="RStudio Screen"><img src="rstudio.png" class="img-fluid figure-img" width="734" alt="RStudio Screen"></a></p>
-<figcaption>RStudio Screen</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>R Scripts</strong>: This is where put your code in a script. The script is saved with a <code>.R</code> extension. An R script is a text file that you can read on text editors too. We use RStudio to run the code in a way that the computer understands.<br>
-<strong>Console</strong>: Output from your code appears here. You can also write the code directly here. But it does not get saved. Also, by default, it shows only a limited number of previous steps (commands + outputs). Not a good practice to code here.<br>
-<strong>Environment</strong>: All the objects, datasets, lists, etc that you have created/loaded in the environment appear here. Alongside, you also see the custom functions that you might create.<br>
-<strong>File Browser/Help/Plot</strong>: Internal file navigator and help documentation for packages and functions appear here. Further, when you plot anything, that also gets shown here.<br>
-<strong>Comments</strong>: R interprets every line in the script as a separate command. And it does for each line unless preceded by a <code>#</code>. Comments signal to R that what follows the <code>#</code> is to be ignored.We use comments to write explanatory notes about the code. A comment should explain the purpose of a command or code and not just be a description of what it does.</p>
+<section id="guidelines" class="level2">
+<h2 class="anchored" data-anchor-id="guidelines">Guidelines</h2>
+<p>The article “Ten Simple Rules for Reproducible Computational Research” by <span class="citation" data-cites="sandveTenSimpleRules2013">Sandve et al. (<a href="#ref-sandveTenSimpleRules2013" role="doc-biblioref">2013</a>)</span> provides guidelines to ensure that computational research is reproducible, transparent, and robust. Here’s a summary of the key points:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 66%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Rule</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Documentation</td>
+<td>Track how results are produced, including all steps in the analysis workflow.</td>
+<td>Keep short notes on reults</td>
+</tr>
+<tr class="even">
+<td>Automation</td>
+<td>Minimize manual data manipulation by using scripts and documenting any manual changes.</td>
+<td>Make changes to raw data in your scripts</td>
+</tr>
+<tr class="odd">
+<td>Version Control</td>
+<td>Use version control systems for all custom scripts to track changes and maintain reproducibility.</td>
+<td>Using Github</td>
+</tr>
+<tr class="even">
+<td>Comprehensive Records</td>
+<td>Archive all versions of external programs used, all intermediate results, and exact observation conditions.</td>
+<td>Keep notes about data in comments</td>
+</tr>
+<tr class="odd">
+<td>Accessibility</td>
+<td>Make raw data, scripts, and results publicly accessible to enhance transparency and replication.</td>
+<td>Maintainig good workflow</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="basics" class="level2">
-<h2 class="anchored" data-anchor-id="basics">Basics</h2>
-<p>R uses <code>&lt;-</code> as the assignment operator. To the left of it is an object (sort of like a box that stores values which are to the right of the operator).</p>
-<p><strong>Syntax</strong>: <code>object &lt;- value/data</code></p>
+<section id="annotatating-code" class="level2">
+<h2 class="anchored" data-anchor-id="annotatating-code">Annotatating Code</h2>
+<p>A comment should explain the purpose of a command or code and not just be a description of what it does.</p>
+<p><strong>In <code>R</code></strong>, comments are designated by a # (pound) sign</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><span style="color:#1696d2;">Exercise 1</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><span style="color:#1696d2;">Code 1</span></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">R - Bad Commenting</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R - Good Commenting</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<ol type="1">
-<li>Create a new <code>.R</code> script. Name it and save it on your system.<br>
-</li>
-<li>R does all the functions of a calculator. Write some code in the script that</li>
-</ol>
-<ul>
-<li><p>Adds two numbers</p></li>
-<li><p>Multiplies three numbers</p></li>
-<li><p>Prints your name</p></li>
-</ul>
-<ol start="3" type="1">
-<li><p>Run each command separately by using <code>cmd + Enter / ctrl + Enter</code>.</p></li>
-<li><p>Assign the outputs from <strong>2</strong> to different objects.</p></li>
-<li><p>Print the objects with some description using <code>paste()</code>.</p></li>
-<li><p>Run the whole file.</p></li>
-</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- rnorm(100)  # generating data</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">y &lt;- x + rnorm(100, mean=50, sd=0.1)  # creating y</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">plot(x, y)  # plotting x against y</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">m &lt;- lm(y ~ x)  # linear model</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="in">summary(m)  # summary of model</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>You can start a new script through many different ways:</p>
-<ol type="1">
-<li><p><code>ctrl + shift + n</code></p></li>
-<li><p>Click on the tiny white page button with a green+sign on the upper left corner of the screen</p></li>
-<li><p>Click on <code>File &gt; New file&gt; R script</code></p></li>
-</ol>
-<p>Saving a script:</p>
-<ol type="1">
-<li><p><code>Ctrl + S</code></p></li>
-<li><p>Enter the name of the script, and add <code>.R</code> as a suffix. For example: xyzbasic.R</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#2. </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">7</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dv">56</span> <span class="sc">*</span> <span class="dv">9</span> <span class="sc">*</span> <span class="dv">33</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Parushya"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The output is displayed in the console.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#4</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>sum_2 <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">7</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>prod_3 <span class="ot">&lt;-</span> <span class="dv">56</span> <span class="sc">*</span> <span class="dv">9</span> <span class="sc">*</span> <span class="dv">33</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in"># Generate a sample of 100 random numbers from a standard normal distribution</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- rnorm(100)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="in"># Create a dependent variable 'y' with a strong linear relationship plus small random noise</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="in">y &lt;- x + rnorm(100, mean=50, sd=0.1)</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="st">"parushya"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="in"># Plot 'x' against 'y' to visualize the relationship</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="in">plot(x, y, main="Scatterplot of Y against X", xlab="X variable", ylab="Y variable")</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="in"># Fit a linear regression model to predict 'y' based on 'x'</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="in">model &lt;- lm(y ~ x)</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="in"># Display a detailed summary of the regression model</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="in">summary(model)</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#5</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Sum of 2 and 7 is"</span>, sum_2)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Product of 56, 9 and 33 is"</span>, prod_3)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"This very fancy R code was written by"</span>, name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div>
+<p><br></p>
+<p><strong>In <code>STATA</code></strong> Comments may be added to programs in three ways:<br>
+* begin the line with <em>;<br>
+</em> begin the comment with //;<br>
+* place the comment between /* and */ delimiters.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Stata - Bad Commenting</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Stata - Good Commenting</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{stata}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">sysuse auto</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">gen z = price + weight</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="in">regress z mpg</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{stata}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">// Load the built-in 'auto' dataset from Stata's system files</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">sysuse auto, clear</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in">// Generate a new variable 'z' representing the sum of 'price' and 'weight'</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="in">gen z = price + weight</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="in">// Perform a linear regression of 'z' on 'mpg' to understand the relationship between mileage and the new variable</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="in">regress z mpg</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <p><br></p>
 </section>
-<section id="objects-datatypes-and-data-structures" class="level2">
-<h2 class="anchored" data-anchor-id="objects-datatypes-and-data-structures">Objects, Datatypes, and Data Structures</h2>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span style="color:#1696d2;">Exercise 2</span>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Run the following code in the same script that we created</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(sum_2)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(prod_3)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-<p><strong>Everything in R is called an “object”</strong></p>
-<p>“Objects” contain “data”.</p>
-<p>The three variables we created - <code>sum_2</code>, <code>prod_3</code>, and <code>name</code> - were all basic objects.</p>
-<p>R has 5 basic or “atomic” <strong>classes/datatypes</strong> of objects.</p>
-<ol type="1">
-<li><p><em>Character</em> - (abc)</p></li>
-<li><p><em>Numeric</em> - (real numbers) - (1,7.5,etc)</p></li>
-<li><p><em>Integer</em> - (1,2,0,-896)</p></li>
-<li><p><em>Logical</em> - (True/False)</p></li>
-<li><p><em>Complex</em> - (1, 0+i)</p></li>
-</ol>
-<p><strong>Data structures</strong> are bigger containers that hold many objects.</p>
-<p>Two basic or “atomic” data structures in R are:</p>
-<ol type="1">
-<li><p><strong>Vectors</strong>: can hold objects of same datatype</p></li>
-<li><p><strong>Lists</strong>: can hold objects with different datatypes</p></li>
-</ol>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Understanding Vectors
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We can create a vector using the “c()” command.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a_num <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.7</span>,<span class="dv">9</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="sc">-</span><span class="dv">1</span>)            <span class="co"># numeric or double</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>b_logical <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">TRUE</span>) <span class="co"># logical</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>c_logical <span class="ot">&lt;-</span> <span class="fu">c</span>(T,F,T,T,T) <span class="co"># also logical - Never use T and F as it leads to errors in analysis</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>d_char <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Sheila"</span>, <span class="st">"Nila"</span>, <span class="st">"Camilla"</span>)  <span class="co"># character</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>e_int <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span> <span class="co"># integer</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>f_int <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)  <span class="co"># integer</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>g_int <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">+</span><span class="dv">0</span>i,<span class="dv">2</span><span class="sc">+</span><span class="dv">4</span>i) <span class="co"># complex numbers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Basic vectors are uni-dimensional. We can make a two dimensional vector, which is called <strong>matrix</strong>.</p>
-<section id="working-with-matrices" class="level3">
-<h3 class="anchored" data-anchor-id="working-with-matrices">Working with matrices</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating Blank Matrix</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>m_1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">nrow=</span><span class="dv">3</span>,<span class="at">ncol=</span><span class="dv">4</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>m_1      </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2] [,3] [,4]
-[1,]   NA   NA   NA   NA
-[2,]   NA   NA   NA   NA
-[3,]   NA   NA   NA   NA</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(m_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3 4</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>?matrix <span class="co"># Help documentation</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating Matrix with elements</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>m_2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">4</span>) <span class="co"># Why the warning?</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>m_2</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># With correct number of elements</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>m_3 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">18</span>, <span class="at">nrow=</span><span class="dv">9</span>, <span class="at">ncol=</span><span class="dv">2</span>)<span class="er">)</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>m3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Logic of matrices</strong></p>
-<p>Matrices are constructed column-wise. So, it fills the upper left corner, and then runs down along.</p>
-<p><strong>Indexing in matrices</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rows &amp; Columns ----    </span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Very simply the syntax is:  (2,3) = (Rows, Columns)</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># m[1,] - 1st row</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># m[2,] - 2nd row</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># m[,3] - 3rd column  </span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># m[,5] - 5th column</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># m[,7] - 7th column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What if you already have a vector?</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: You have received a list of students who have skipped school today.</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># You know which section they are in, and want to create a matrix.</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Hashem"</span>, <span class="st">"John"</span>, <span class="st">"Cecillia"</span>, <span class="st">"Minha"</span>, <span class="st">"Parushya"</span>, <span class="st">"Keeheon"</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Hashem"   "John"     "Cecillia" "Minha"    "Parushya" "Keeheon" </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(k) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1]       [,2]      
-[1,] "Hashem"   "Minha"   
-[2,] "John"     "Parushya"
-[3,] "Cecillia" "Keeheon" </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(k) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Section A"</span>, <span class="st">"Section B"</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     Section A  Section B 
-[1,] "Hashem"   "Minha"   
-[2,] "John"     "Parushya"
-[3,] "Cecillia" "Keeheon" </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(k) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Student 1"</span>, <span class="st">"Student 2"</span>, <span class="st">"Student 3"</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>          Section A  Section B 
-Student 1 "Hashem"   "Minha"   
-Student 2 "John"     "Parushya"
-Student 3 "Cecillia" "Keeheon" </code></pre>
-</div>
-</div>
-<p><strong>Binding vectors together to make a matrix</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Binding</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Camilla"</span>,<span class="st">"Nila"</span>,<span class="st">"Duflo"</span>,<span class="st">"Akbar"</span>)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 2 3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4 5 6</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Camilla" "Nila"    "Duflo"   "Akbar"  </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(x,y) <span class="co"># Stitches vector row wise, or appends it horizontally</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  [,1] [,2] [,3]
-x    1    2    3
-y    4    5    6</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(x,y) <span class="co"># Stitches vector column wise, or vertically</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     x y
-[1,] 1 4
-[2,] 2 5
-[3,] 3 6</code></pre>
-</div>
-</div>
-</section>
-</div>
-</div>
-<section id="lists" class="level3">
-<h3 class="anchored" data-anchor-id="lists">Lists</h3>
-<p>If we want to create something that stores objects of different classes together, we use another data structure called <code>list</code>.</p>
-<p>A list can contain two or more classes of objects with different lengths.</p>
-<div class="callout callout-style-simple callout-none no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>Creating lists</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>list_1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"a"</span> <span class="ot">=</span> <span class="fl">2.5</span>, <span class="st">"b"</span> <span class="ot">=</span> <span class="cn">TRUE</span>, <span class="st">"c"</span> <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>list_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$a
-[1] 2.5
-
-$b
-[1] TRUE
-
-$c
-[1] 1 2 3</code></pre>
-</div>
-</div>
-<p>We created a list with objects of three different types - <code>numeric</code>, <code>logical</code>, and <code>integer vector</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Structure of the list</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(list_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>List of 3
- $ a: num 2.5
- $ b: logi TRUE
- $ c: int [1:3] 1 2 3</code></pre>
-</div>
-</div>
-<p>We can also create a list with existing vectors.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A new vector</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>name_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Camilla"</span>,<span class="st">"Nila"</span>,<span class="st">"Duflo"</span>,<span class="st">"Akbar"</span>)</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># And then lets use the vectors we already have in the environment</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>list_2 <span class="ot">&lt;-</span> <span class="fu">list</span>(name_vec, c_logical, d_char, f_int, e_int, a_num)</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>list_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] "Camilla" "Nila"    "Duflo"   "Akbar"  
-
-[[2]]
-[1]  TRUE FALSE  TRUE  TRUE  TRUE
-
-[[3]]
-[1] "Sheila"  "Nila"    "Camilla"
-
-[[4]]
-[1] 1 2 3 4 5
-
-[[5]]
- [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
-
-[[6]]
-[1]  0.0  0.7  9.0  2.0  3.0  4.0 -1.0</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let's check the classes of objects</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(list_2[[<span class="dv">2</span>]])</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(list_2[[<span class="dv">3</span>]])</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># And their lengths</span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(list_2[[<span class="dv">2</span>]])</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(list_2[[<span class="dv">3</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Accessing elements in a List</strong></p>
-<p>By indices in a list</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># So lists are printed differently, and elements of a list will have [[]] i.e 2 brackets.    </span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>list_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] "Camilla" "Nila"    "Duflo"   "Akbar"  
-
-[[2]]
-[1]  TRUE FALSE  TRUE  TRUE  TRUE
-
-[[3]]
-[1] "Sheila"  "Nila"    "Camilla"
-
-[[4]]
-[1] 1 2 3 4 5
-
-[[5]]
- [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
-
-[[6]]
-[1]  0.0  0.7  9.0  2.0  3.0  4.0 -1.0</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Accessing elements | run each of the follwing lines and see the output</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>list_2[[<span class="dv">2</span>]] </span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>list_2[<span class="dv">2</span>]</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>list_2[<span class="dv">1</span>][<span class="dv">2</span>]</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>list_2[[<span class="dv">1</span>]][<span class="dv">1</span>]</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>list_2[[<span class="dv">1</span>]][[<span class="dv">1</span>]]</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>list_2[[<span class="dv">1</span>]][<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>By using names or tags</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>list_3 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">name =</span> <span class="st">"John"</span>, <span class="at">age =</span> <span class="dv">19</span>, <span class="at">speaks =</span> <span class="fu">c</span>(<span class="st">"English"</span>, <span class="st">"French"</span>))</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># access elements by name</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>list_3<span class="sc">$</span>name</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>list_3<span class="sc">$</span>age</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>list_3<span class="sc">$</span>speaks</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co"># access elements by integer index</span></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>list_3[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)]</span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>list_3[<span class="sc">-</span><span class="dv">2</span>]</span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="co"># access elements by logical index</span></span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>list_3[<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)]</span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="co"># access elements by character index</span></span>
-<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>list_3[<span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"speaks"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Modifying lists</strong></p>
-<p>Adding components in a list</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>list_4 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">name =</span> <span class="st">"Clair"</span>, <span class="at">age =</span> <span class="dv">19</span>, <span class="at">speaks =</span> <span class="fu">c</span>(<span class="st">"English"</span>, <span class="st">"French"</span>))</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># assign a new element to the list using double brackets [[]]</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>list_4[[<span class="st">"married"</span>]] <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co"># print the updated list</span></span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>list_4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$name
-[1] "Clair"
-
-$age
-[1] 19
-
-$speaks
-[1] "English" "French" 
-
-$married
-[1] FALSE</code></pre>
-</div>
-</div>
-<p>Deleting components in a list</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>list_5 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">name =</span> <span class="st">"Clair"</span>, <span class="at">age =</span> <span class="dv">19</span>, <span class="at">speaks =</span> <span class="fu">c</span>(<span class="st">"English"</span>, <span class="st">"French"</span>))</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># remove an element from the list using double brackets [[]]</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>list_5[[<span class="st">"age"</span>]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co"># print the structure of the updated list</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(list_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>List of 2
- $ name  : chr "Clair"
- $ speaks: chr [1:2] "English" "French"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove an element from the list using $ notation</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>list_5<span class="sc">$</span>married <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print the structure of the updated list</span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(list_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>List of 2
- $ name  : chr "Clair"
- $ speaks: chr [1:2] "English" "French"</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</section>
 <section id="file-management-and-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="file-management-and-workflow">File Management and Workflow</h2>
-<ol type="1">
-<li><p>Using R Projects</p></li>
-<li><p><code>here</code> package</p></li>
-<li><p>Folder Structure</p></li>
-<li><p>Takeaways</p></li>
-</ol>
-</section>
-<section id="r-projects" class="level2">
-<h2 class="anchored" data-anchor-id="r-projects">R Projects</h2>
-<p>We used the <code>setwd()</code> command till now to trace the files we need in our work. As your work expands, projects will have multiple datasets to be loaded, different subsidiary scripts to be used, and multiple outputs to be saved.</p>
-<p>A first order problem related to both file management and reproducability of code is the usage of file paths. Using <strong>absolute paths</strong>, like <code>~/User/MyName/Documents/.....</code> becomes cumbersome and also inhibits efficiency of reproducability. Every time someone else runs the script, they will have to change the file paths in all the instances in Rscripts or <code>.qmd</code> file to locate the related datasets as well as other objects. Similarly, there would be issues with saving objects in new places. A partially efficient way we used till now involved using <code>setwd()</code> to direct R to a new working directory; this is also called usage of <strong>relative paths</strong></p>
-<p><strong>R Projects</strong> is a built-in mechanism in RStudio for seamless file management and usage of relative paths.</p>
-<p>Let’s start by creating a new project. Click <code>File &gt; New Project</code>. Name the new project <code>govt-8001-dataessay</code>.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-new-project" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-new-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="new-project.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;1: To create new project: (top) first click New Directory, then (middle) click New Project, then (bottom) fill in the directory (project) name, choose a good subdirectory for its home and click Create Project. source"><img src="new-project.png" class="img-fluid figure-img" width="1172"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-new-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: To create new project: (top) first click New Directory, then (middle) click New Project, then (bottom) fill in the directory (project) name, choose a good subdirectory for its home and click Create Project. <a href="https://r4ds.hadley.nz/workflow-scripts">source</a>
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
+<section id="understanding-absolute-and-relative-paths" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-absolute-and-relative-paths">Understanding Absolute and Relative Paths</h3>
+<p>When working with files in any programming environment, paths specify the location of files and folders. These paths can be absolute or relative, and the choice between them significantly impacts reproducibility, portability, and ease of collaboration</p>
+<p><strong>Absolute Paths</strong> An absolute path provides the complete address of a file or folder, starting from the root directory of the file system. It tells the software exactly where to find a file, regardless of where the script is run.</p>
+<p>Example: C:/Users/YourName/Documents/Project/Data/raw_data.dta</p>
+<p><strong>Relative Paths</strong> A relative path specifies the location of a file or folder relative to a “base directory” (e.g., the project’s working directory). It does not start from the root directory but instead is calculated based on the location of the script.</p>
+<p>Suppose your working directory is set to: <code>C:/Users/YourName/Documents/Project</code></p>
+<p>Then, a relative path might look like: <code>Data/raw_data.dta</code></p>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>Exercise</strong></p>
-<ol type="1">
-<li><p>Do this process again, this time creating a new project in the the existing directory. The existing directory should be the folder where you have been saving R scripts and <code>.qmd</code> file associated with math camp 2024.</p></li>
-<li><p>Go to the folder on your system, and click the <code>.RProj</code> file.</p></li>
-<li><p>Start a new <code>qmd</code> file like we did yesterday. Delete existing code except for YAML. Run <code>getwd()</code> command in console and see the difference.</p></li>
-<li><p>Start a new R code chunk (<code>cmd + option + I</code>) and load vdem dataset. Notice the change in behavior when you press <code>TAB</code> inside the <code>readRDS()</code> function.</p></li>
-</ol>
+<p><strong>Practical Analogy</strong> Think of absolute and relative paths like giving directions to a house:</p>
+<p>Absolute Path: “Go to the main city square, then take the highway north, turn right at the first traffic light, and find the house at 123 Main Street.” Works for people starting anywhere, but requires detailed instructions specific to the city. Relative Path: “From the library, walk two blocks north, then turn left. The house is the second one on the right.” Simpler and context-aware, but assumes everyone starts from the library.</p>
 </div>
 </div>
 </div>
+<p><strong>Key Differences Between Absolute and Relative Paths</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 52%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Feature</strong></th>
+<th><strong>Absolute Path</strong></th>
+<th><strong>Relative Path</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Starting Point</strong></td>
+<td>Starts from the root directory of the file system.</td>
+<td>Starts from the current working directory.</td>
+</tr>
+<tr class="even">
+<td><strong>Portability</strong></td>
+<td>Not portable—specific to the user’s system.</td>
+<td>Highly portable—adapts to different systems.</td>
+</tr>
+<tr class="odd">
+<td><strong>Ease of Sharing</strong></td>
+<td>Harder to share; others must update paths.</td>
+<td>Easier to share; no changes needed if structure is consistent.</td>
+</tr>
+<tr class="even">
+<td><strong>Use Case</strong></td>
+<td>Best for fixed environments or one-off scripts.</td>
+<td>Ideal for collaborative and reproducible projects.</td>
+</tr>
+<tr class="odd">
+<td><strong>Flexibility</strong></td>
+<td>Breaks if the file is moved or the system changes.</td>
+<td>Adapts as long as the folder structure remains consistent.</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="here-package" class="level2">
-<h2 class="anchored" data-anchor-id="here-package"><code>here</code> package</h2>
-<p>An efficient file and folder management system is going to be crucial as we move into working with serious projects. As stressed earlier, keeping and using all the files associated with a project in a comprehensible folder system is facilitated by R Projects. You would ideally want to create your own template for folder management that you follow across proejcts. For starters, the folder structure below is the one created for your data essay assignment in Govt 8001 or Quant 1.</p>
-<p>You can use the point-and-click fucntionality in your computers to create this strcuture. Later today, we will briefly go through an R script that do this programmatically.</p>
-<pre><code>📦 govt-8001-dataessay
-├─&nbsp;govt-8001-dataessay.RProj
+<section id="standardized-folder-and-file-structure" class="level3">
+<h3 class="anchored" data-anchor-id="standardized-folder-and-file-structure">Standardized Folder and File Structure</h3>
+<p>An efficient file and folder management system is going to be crucial as we move into working with serious projects. Storing using all the files associated with a project in a comprehensible folder system is facilitated in both R and Stata. You would ideally want to create your own template for folder management that you follow across proejcts. For starters, the folder structure below is the one created for your research project in this course.</p>
+<p>You can use the point-and-click functionality in your computers to create this structure. Or you can do it prgrammatically given the scripts in sub-chapters for stata and R.</p>
+<pre><code>📦 cpe-4980-dataessay
+├─&nbsp;cpe-4980-dataessay.RProj
 ├─&nbsp;000-setup.R
 ├─&nbsp;001-eda.qmd
 ├─&nbsp;002-analysis.qmd
@@ -781,199 +476,33 @@ Figure&nbsp;1: To create new project: (top) first click New Directory, then (mid
 &nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;└─&nbsp;.csv
 &nbsp;&nbsp;&nbsp;└─&nbsp;Text
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─&nbsp;...txt</code></pre>
-<p><strong>Suggested folder structure for a Quant-1 project</strong></p>
-<p>While we learnt how to create or associate an <code>.RProj</code> with a folder, integrating it with <code>here()</code> function from the <code>here</code> package, makes things further smoother. Let’s do it with the following exercise.</p>
-<div class="callout callout-style-simple callout-none no-icon">
-<div class="callout-body d-flex">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
-<p><strong>Exercise</strong></p>
+<div class="callout-title-container flex-fill">
+Key Takeaways for Reproduciblility
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
-<li><p>Go the RStudio window with <code>mathcamp2024</code> project. Check the extreme upper left corner to see if you are in the write window.</p></li>
-<li><p>In the qmd file we were working in, add an R chunk.</p></li>
-<li><p>Load the library <code>here</code> with the follwing code. Run the code line by line</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a> <span class="co"># See the output for each of the following lines</span></span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">here</span>()</span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="fu">here</span>(<span class="st">"Datasets-mathcamp"</span>,<span class="st">"V-Dem-CY-Full+Others-v12.rds"</span>)</span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="co"># syntax is</span></span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="co"># here("First subfolder from the root folder", "second subfolder",...., "file")</span></span>
-<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>vdem_new <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"Datasets-mathcamp"</span>,<span class="st">"V-Dem-CY-Full+Others-v12.rds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This is a cleaner syntax which when coupled with usage of R projects saves time in typing file paths and avoids issues when the project is run on some other computer system.</p>
-<p>Note: <code>here()</code> always notes the path from the main folder or the root directory where your <code>.RProj</code> file is located.</p>
-<p><strong>Save the files and close the <code>mathcamp2024</code> project window</strong></p>
-</div>
-</div>
-</div>
-<p>Make it a habit of using R Prohects and <code>here()</code> function in your scripts for writing portable code.</p>
-<p>You can read this quick and informative blogpost on using these two <a href="http://jenrichmond.rbind.io/post/how-to-use-the-here-package/">here</a>.</p>
-</section>
-<section id="folder-structure" class="level2">
-<h2 class="anchored" data-anchor-id="folder-structure">Folder Structure</h2>
-<p>Let’s look at the other opened RStudio window. This is the one associated with <code>govt-8001-dataessay</code>.</p>
-<p>We ideally want a folder structure that is easily understandable to us and others.</p>
-<pre><code>📦 govt-8001-dataessay
-├─&nbsp;govt-8001-dataessay.RProj
-├─&nbsp;000-setup.R
-├─&nbsp;001-eda.qmd
-├─&nbsp;002-analysis.qmd
-└─&nbsp;003-manuscript.qmd
-├─&nbsp;Data
-│&nbsp;&nbsp;├─&nbsp;Raw
-│&nbsp;&nbsp;│&nbsp;&nbsp;├─&nbsp;Dataset1
-│&nbsp;&nbsp;│&nbsp;&nbsp;│&nbsp;&nbsp;├─&nbsp;dataset1.csv
-│&nbsp;&nbsp;│&nbsp;&nbsp;│&nbsp;&nbsp;└─&nbsp;codebook-dataset1.pdf
-│&nbsp;&nbsp;│&nbsp;&nbsp;└─&nbsp;Dataset2
-│&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─&nbsp;...dta
-│&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─&nbsp;codebook-dataset2.pdf
-│&nbsp;&nbsp;└─&nbsp;Clean
-│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─&nbsp;Merged-df1-df2.csv
-├─&nbsp;Scripts
-│&nbsp;&nbsp;├─&nbsp;R-scripts
-│&nbsp;&nbsp;│&nbsp;&nbsp;├─&nbsp;plotting-some-variable.R
-│&nbsp;&nbsp;│&nbsp;&nbsp;└─&nbsp;exploring-different-models.R
-│&nbsp;&nbsp;├─&nbsp;Stata-Scripts
-│&nbsp;&nbsp;│&nbsp;&nbsp;└─&nbsp;seeing-variable-labels.do
-│&nbsp;&nbsp;└─&nbsp;Python-Scripts
-│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─&nbsp;scraping-data-from-website.py
-└─&nbsp;Outputs
-&nbsp;&nbsp;&nbsp;├─&nbsp;Plots
-&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├─&nbsp;...jpeg
-&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;└─&nbsp;...png
-&nbsp;&nbsp;&nbsp;├─&nbsp;Tables
-&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;└─&nbsp;.csv
-&nbsp;&nbsp;&nbsp;└─&nbsp;Text
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─&nbsp;...txt</code></pre>
-<p>We can create this structure by using point and click system on our laptops. But since we might want to use the same folder structure repetitively it will make sense to be <strong>lazy</strong> and do it programmatically.</p>
-<div class="callout callout-style-simple callout-none no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Exercise</p>
-<ol type="1">
-<li><p>Download the <code>000-setup.R</code> from <a href="https://georgetown.app.box.com/file/1629650190568">here</a></p></li>
-<li><p>Place it in the <code>govt-8001-dataessay</code> folder.</p></li>
-<li><p>Open it in the opened RStudio window.</p></li>
-</ol>
-<div class="sourceCode" id="cb50"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="in"># Name: 000-setup.R</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="in"># Author: Parushya</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="in"># Purpose: Creates main folders, subfolders in the main project directory</span></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="in"># Will also ensure that you have basic packages required to run the repository</span></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="in"># Date Created: 2020/10/07</span></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="in"># Checking if packages are installed and installing</span></span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a><span class="in"># check.packages function: install and load multiple R packages.</span></span>
-<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a><span class="in"># Found this function here: https://gist.github.com/smithdanielle/9913897 on 2019/06/17</span></span>
-<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a><span class="in"># Check to see if packages are installed. Install them if they are not, then load them into the R session.</span></span>
-<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a><span class="in">check.packages &lt;- function(pkg) {</span></span>
-<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a><span class="in">  new.pkg &lt;- pkg[!(pkg %in% installed.packages()[, "Package"])]</span></span>
-<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a><span class="in">  if (length(new.pkg)) {</span></span>
-<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a><span class="in">    install.packages(new.pkg, dependencies = TRUE)</span></span>
-<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a><span class="in">  sapply(pkg, require, character.only = TRUE)</span></span>
-<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a><span class="in"># Check if packages are installed and loaded:</span></span>
-<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a><span class="in">packages &lt;- c("janitor",  "tidyverse", "utils", "here")</span></span>
-<span id="cb50-27"><a href="#cb50-27" aria-hidden="true" tabindex="-1"></a><span class="in">check.packages(packages)</span></span>
-<span id="cb50-28"><a href="#cb50-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-29"><a href="#cb50-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-30"><a href="#cb50-30" aria-hidden="true" tabindex="-1"></a><span class="in"># Setting Directories and creating subfolders</span></span>
-<span id="cb50-31"><a href="#cb50-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-32"><a href="#cb50-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-33"><a href="#cb50-33" aria-hidden="true" tabindex="-1"></a><span class="in"># Creating Sub Folders</span></span>
-<span id="cb50-34"><a href="#cb50-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-35"><a href="#cb50-35" aria-hidden="true" tabindex="-1"></a><span class="in">## Data</span></span>
-<span id="cb50-36"><a href="#cb50-36" aria-hidden="true" tabindex="-1"></a><span class="in">dir.create(file.path(paste0(here("Data")))) # Data Folder</span></span>
-<span id="cb50-37"><a href="#cb50-37" aria-hidden="true" tabindex="-1"></a><span class="in">dir.create(file.path(paste0(here("Data","Raw")))) # Raw Data sub-folder</span></span>
-<span id="cb50-38"><a href="#cb50-38" aria-hidden="true" tabindex="-1"></a><span class="in">dir.create(file.path(paste0(here("Data","Clean")))) # Clean Data sub-folder</span></span>
-<span id="cb50-39"><a href="#cb50-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-40"><a href="#cb50-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-41"><a href="#cb50-41" aria-hidden="true" tabindex="-1"></a><span class="in"># Scripts</span></span>
-<span id="cb50-42"><a href="#cb50-42" aria-hidden="true" tabindex="-1"></a><span class="in">dir.create(file.path(paste0(here("Scripts")))) # Scripts Folder</span></span>
-<span id="cb50-43"><a href="#cb50-43" aria-hidden="true" tabindex="-1"></a><span class="in">dir.create(file.path(paste0(here("Scripts","RScripts")))) # RScripts  sub-folder</span></span>
-<span id="cb50-44"><a href="#cb50-44" aria-hidden="true" tabindex="-1"></a><span class="in">dir.create(file.path(paste0(here("Scripts","Stata-Scripts")))) # Stata Scripts sub-folder</span></span>
-<span id="cb50-45"><a href="#cb50-45" aria-hidden="true" tabindex="-1"></a><span class="in">dir.create(file.path(paste0(here("Scripts","Python-Scripts")))) # Python Scripts sub-folder</span></span>
-<span id="cb50-46"><a href="#cb50-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-47"><a href="#cb50-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-48"><a href="#cb50-48" aria-hidden="true" tabindex="-1"></a><span class="in"># Output</span></span>
-<span id="cb50-49"><a href="#cb50-49" aria-hidden="true" tabindex="-1"></a><span class="in">dir.create(file.path(paste0(here("Outputs")))) # Outputs Folder</span></span>
-<span id="cb50-50"><a href="#cb50-50" aria-hidden="true" tabindex="-1"></a><span class="in">dir.create(file.path(paste0(here("Outputs","figures")))) # Figures sub-folder</span></span>
-<span id="cb50-51"><a href="#cb50-51" aria-hidden="true" tabindex="-1"></a><span class="in">dir.create(file.path(paste0(here("Outputs","tables")))) # Tables sub-folder</span></span>
-<span id="cb50-52"><a href="#cb50-52" aria-hidden="true" tabindex="-1"></a><span class="in">dir.create(file.path(paste0(here("Outputs","text")))) # Text sub-folder</span></span>
-<span id="cb50-53"><a href="#cb50-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-54"><a href="#cb50-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="4" type="1">
-<li>Run the file line-by-line. See the folder structure created in your main folder.</li>
+<li><p>Any modifications to the raw dataset, like manipulating a variable’s scale, generation of new variables, or removal of values, should be done in the scripts as far as possible. When done externally, make a note with comments in the code.</p></li>
+<li><p>Write well commented code. Explaining the functions performed by the commands in the context of your data analysis.</p></li>
+<li><p>Use relative paths.</p></li>
+<li><p>Use a standardized folder system.<br>
+</p></li>
 </ol>
 </div>
 </div>
-</div>
-</section>
-<section id="takeaways" class="level2">
-<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
-<p>Here’s a quick workflow for starting a new project or assignment or paper.</p>
-<ol type="1">
-<li><p>Make a new folder in your computer with apt name. Ideally, <code>govt-&lt;coursecode&gt;-&lt;project&gt;</code>.</p></li>
-<li><p>Start RStudio.</p></li>
-<li><p>Create a new Rstudio Project by clicking <code>File &gt; New Project</code>. Name it <code>govt-&lt;coursecode&gt;-&lt;project</code>.</p></li>
-<li><p>Check if now your RStudio Window shows the project name on top right corner. If not, go to folder and double-click the <code>.RProj</code> file.</p></li>
-<li><p>Paste the <code>000-setup.R</code> file in the main project folder. Open it in the same Rstudio window with the project and run the complete file. Your folder structure is created.</p></li>
-<li><p>Copy your raw data in <code>Data/Raw</code> folder. Similarly, your scripts in <code>Scripts/RScripts</code> folder</p></li>
-<li><p>Start your new <code>.qmd</code> file and save it in the main folder.</p></li>
-<li><p>Remember to use <code>here()</code> package extensively in both scripts and quarto file when loading or saving the data.</p></li>
-<li><p>You can always zip the whole project folder for sharing. The receiver will just need to unzip and run the code after starting the associated <code>.RProj</code> file, without changing file paths on their computer.</p></li>
-</ol>
-</section>
-<section id="additional-links" class="level1">
-<h1>Additional Links</h1>
-<ol type="1">
-<li>On Coding Practices</li>
-</ol>
-<ul>
-<li><p><a href="https://web.stanford.edu/~gentzkow/research/CodeAndData.pdf">Code and Data for the Social Sciences:A Practitioner’s Guide, by Gentzkow and Shapiro</a></p></li>
-<li><p><a href="https://style.tidyverse.org/index.html">R Tidyverse Coding Style Guide</a></p></li>
-<li><p><a href="https://www.jakebowers.org/PAPERS/tpm_v18_n2.pdf">Political Methodologist Perspective</a></p></li>
-</ul>
-<ol start="2" type="1">
-<li>On Tidyverse</li>
-</ol>
-<ul>
-<li><p><a href="https://r4ds.hadley.nz/">R for DataScience, by Hadley Wickham et al.</a></p>
-<ul>
-<li>This is a highly recommended book written by creators of tidyverse.</li>
-</ul></li>
-</ul>
-<ol start="3" type="1">
-<li>Tutorials for R Programming</li>
-</ol>
-<ul>
-<li><a href="https://discdown.org/rprogramming/index.html">Intro to R Programming</a></li>
-<li><a href="https://intro2r.com/">Another Intro to R</a></li>
-</ul>
-<p><a href="https://posit.co/resources/cheatsheets/">R Cheatsheets Link</a></p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-sandveTenSimpleRules2013" class="csl-entry" role="listitem">
+Sandve, Geir Kjetil, Anton Nekrutenko, James Taylor, and Eivind Hovig. 2013. <span>“Ten Simple Rules for Reproducible Computational Research.”</span> <em>PLOS Computational Biology</em> 9 (10): e1003285. <a href="https://doi.org/10.1371/journal.pcbi.1003285">https://doi.org/10.1371/journal.pcbi.1003285</a>.
+</div>
+</div>
+</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
@@ -1560,38 +1089,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 
