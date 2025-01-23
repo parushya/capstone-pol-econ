@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Capstone in Political Economy",
     "section": "",
-    "text": "Introduction\nThis web book is meant to be a one-stop resource for all data and analysis related tasks in the Capstone in Political Economy course.\nThe pages will correspond to Data and Analysis sections in the course.\nThe notes here will use R as a programming language and RStudio as platform (or technically known as IDE - Integrated Development Platform) of choice. However, all the concepts will also be valid for Stata users. I will include any important/relevant deviations between the two programming statistical software approaches here.\nYou shoudl start by having the following installed on your computers:\n\nR - Statistical Programming Language\nRStudio - Interactive Development Environment for R\nStata - Statistical Software Package (the “other” one)\nZotero - Reference Management Tool\nGitHub - Storing code online with version control\n\n\nR and R Studio\nUse the link here to install RStudio on your systems.\n\n\nStata\nStata is a paid software. Georgetown provides download option through the university webstore here.\n\n\nZotero\nZotero is a reference management tool. It allows you to maintain a structured bibliography. Its integration with various web browsers and software like MS Word and R, makes it a fantastic tool for keeping track of readings as well as citing them.\n\n\n\n\n\nZotero Folder\n\n\n\n\n\nMake Zotero Account.\nAdd a connector to the browser (For eg, zotero connector for google chrome).\nDownload Zotero Desktop App here.\nConnect Zotero to R Studio. (We will do this step on Day 5, using the link here).\n\n\n\nGitHub\nMake your account here",
+    "text": "Introduction\nThis web book is meant to be a one-stop resource for all data and analysis related tasks in the Capstone in Political Economy course.\nThe pages will correspond to Data and Analysis sections in the course.\nThe notes here will use R as a programming language and RStudio as platform (or technically known as IDE - Integrated Development Platform) of choice. However, all the concepts will also be valid for Stata users. I will include any important/relevant deviations between the two programming statistical software approaches here.\nYou should start by having the following installed on your computers:\n\nR - Statistical Programming Language\nRStudio - Interactive Development Environment for R\nStata - Statistical Software Package (the “other” one)\nZotero - Reference Management Tool\nGitHub - Storing code online with version control\n\n\nR and R Studio\nUse the link here to install RStudio on your systems.\n\n\nStata\nStata is a paid software. Georgetown provides download option through the university webstore here.\n\n\nZotero\nZotero is a reference management tool. It allows you to maintain a structured bibliography. Its integration with various web browsers and software like MS Word and R, makes it a fantastic tool for keeping track of readings as well as citing them.\n\n\n\n\n\nZotero Folder\n\n\n\n\n\nMake Zotero Account.\nAdd a connector to the browser (For eg, zotero connector for google chrome).\nDownload Zotero Desktop App here.\nConnect Zotero to R Studio. (We will do this step on Day 5, using the link here).\n\n\n\nGitHub\nMake your account here",
     "crumbs": [
       "Introduction"
     ]
@@ -77,6 +77,72 @@
     "text": "Class Structure\nThe course has three forms of instruction:\n\nLecture/Discussions: Sessions indicated as ‘Discussions’ will be a cross between a lecture and group Q&A. These sessions will focus on the major components of the final thesis: Topic/Puzzle, literature review, methodology, and analysis.\n\nData Sessions: The TA will provide sessions aimed at providing you a brief refresher on working with statistical software such as R or Stata.\n\nWriting Days: Much of the semester will be dedicated toward group meetings and writing days. Students will come to class and work on their papers. The professors and TA will be available for questions.\n\nStudents will be divided into two cohorts: one led by Professor Nita Rudra and the other by Professor Joel Simmons. Each cohort will further be subdivided into Group A and Group B. Please ensure you are aware of your assigned cohort and group, as this will determine your participation and schedule throughout the course.\n\n\n\nTentative Schedule\n\n\nOn days scheduled as “Writing Day with Professors”, the particular groups (A or B) from Prof Rudra & Simmons sections will meet them separately. The other groups from both sections will meet the TA (Writing Day with TA).\nAs the course progresses, writing days could also be used as days for one-on-one meetings with Professors and TA for focused discussion on your research projects.\nThe due dates for deliverables (column 3 above) are for both groups in both the sections. All the deliverables are due on Canvas before the beginning of class on that particular date.\nDetails of these deliverables is as follows:\nShort research proposal: Your research proposal should include (i) the research question and why it is interesting, (ii) your working hypothesis and its basis, (iii) potential methodological approach, data and challenges.  It is due on Canvas by the beginning of class. \nLiterature Review: Your literature review should summarize key scholarly works relevant to your research question, identify gaps or unresolved questions in the existing literature, and explain how your research will address these gaps.\nAnalysis: Submit a write-up of the analysis section (including the description of the research methods, presentation of results, and discussion of their robustness).\nPresentation: Standard conference poster presentation. More details about this deliverable to be explained in class.\nAnnotated replication material: Your annotated replication material should include all data, program files, and a detailed readme file necessary to replicate your results. The readme file should clearly explain the steps to reproduce your analysis and any specific instructions for using the data or code.\nFinal Paper: Your final paper should be an article-length manuscript (approximately 20 double-spaced pages) that evaluates, critiques, tests, and builds upon a current debate in political economy. It should include a clear research question, hypotheses, methodology, analysis, results, and a discussion of findings.",
     "crumbs": [
       "Course Details"
+    ]
+  },
+  {
+    "objectID": "using-R.html",
+    "href": "using-R.html",
+    "title": "Using R",
+    "section": "",
+    "text": "Workflow and File Management\nHere’s a quick workflow for starting a new project, which incorporates the key ideas of Reproducible Research:\nFigure 1: To create new project: (top) first click New Directory, then (middle) click New Project, then (bottom) fill in the directory (project) name, choose a good subdirectory for its home and click Create Project. source\nThere are three building blocks in a .qmd file:",
+    "crumbs": [
+      "Reproducible Research",
+      "Using R"
+    ]
+  },
+  {
+    "objectID": "using-R.html#workflow-and-file-management",
+    "href": "using-R.html#workflow-and-file-management",
+    "title": "Using R",
+    "section": "",
+    "text": "Open Rstudio and create a new Rstudio Project by clicking File &gt; New Project. Name it peco-4980-thesis.\n\n\n\nCheck if now your RStudio Window shows the project name on top right corner. If not, go to folder and double-click the .RProj file.\nDownload the 000-setup.R from here. Paste the 000-setup.R file in the main project folder. Open it in the same Rstudio window with the project and run the complete file. Your folder structure is created.\nCopy your raw data in Data/Raw folder. Similarly, your scripts if any, in Scripts/RScripts folder.\nStart your new .qmd file and save it in the main folder. Quarto is an in-built statistical programming and typesetting tool in R. The files are saved as .qmd files.\n\n\n\n\n\n\n\nA Quarto document is saved as a .qmd file. You can edit this file in two ways: Programmatically by being in source button and visually by choosing the Visual button, both button on top left corner of the .qmd window. More details about workign with Quarto can be found on the quarto website here.\n\n\n\n\n\n\nUse here() package extensively in both, scripts and quarto file, when loading or saving the data. The example below in variable creation and merging section illustrates its usage.\nYou can always zip the whole project folder for sharing. The receiver will just need to unzip and run the code after starting the associated .RProj file, without changing file paths on their computer.",
+    "crumbs": [
+      "Reproducible Research",
+      "Using R"
+    ]
+  },
+  {
+    "objectID": "using-R.html#variable-creation-and-merging-datasets",
+    "href": "using-R.html#variable-creation-and-merging-datasets",
+    "title": "Using R",
+    "section": "Variable Creation and Merging Datasets",
+    "text": "Variable Creation and Merging Datasets\n\nClose the RStudio Window. Download the dataset for practice exercise from here. Unzip if needed and then paste the dataset inside ../Data/Raw/.\nClick on the .RProj file in the folder you just created.\nOpen a new .qmd file. Save it (ctrl/cmd + s) as practice.qmd in the root/main folder of the project.\nCope and paste the following code by creating a new R chunk in the qmd file. You can start a new R code chunk by pressing cmd + option + I or ctrl + alt + I.\n\n```{r}\n\nlibrary(here)\n\n\n # See the output for each of the following lines | Use your own datasets\nhere()\n\n# Make modification here after copying your dataset to this folder\n\nhere(\"Data\",\"Raw\",\"practice-datasets\",\"V-Dem-CY-Full+Others-v12.rds\")\n\n# syntax is\n\n# here(\"First subfolder from the root folder\", \"second subfolder\",...., \"file\")\n\n\nvdem_new &lt;- readRDS(here(\"Data\",\"Raw\",\"practice-datasets\",\"V-Dem-CY-Full+Others-v12.rds\")\n\n```\n\nLoad the other datasets (in simultated-datasets folder) by modifying the syntax above and storing it in objects economic_data_2000_2020 and economic_data_1995_2024. Note how you have to change file paths as well as use different functions to load different file types (here dta and rds)\n\n```{r}\ninstall.packages(\"readstata13\") # Package for loading stata files in R\ninstall.packages(\"tidyverse\") # Package for data wrangling\n\nlibrary(tidyverse)\nlibrary(readstata13)\n\neconomic_data_2000_2020 &lt;- read_csv(here(\"Data/Raw/practice-datasets/simulated-datasets/Economic_Data_2000_2020.csv\"))\n\neconomic_data_1995_2024 &lt;- read.dta13(here(\"Data/Raw/practice-datasets/simulated-datasets/Economic_Data_1995_2024.dta\"))\n```\n\nInspect the datasets. There are multiple entries for each country corresponding to different years. Use the following code to merge and clean them.\n\n```{r}\n# Merge the datasets using a left join on 'country_code' and 'year'\nmerged_data &lt;- left_join(economic_data_1995_2024,economic_data_2000_2020, by = c(\"country_code\", \"year\"))\n\n# Filter out rows with NA values in the GDP columns which indicate non-joined rows\nfiltered_data &lt;- merged_data %&gt;%\n  filter(!is.na(gdp.x) & !is.na(gdp.y))\n\n# View the filtered data\nprint(filtered_data)\n\n```\n\nAfter merging create a new variable gdp_pc\n\n```{r}\n# Assuming 'gdp.x' is the GDP from the first dataset and 'population' is the population variable\nfiltered_data &lt;- filtered_data %&gt;%\n  mutate(gdp_pc = ifelse(!is.na(gdp.x) & !is.na(population) & population &gt; 0, gdp.x / population, NA))\n\n# View the updated data with the new 'gdp_pc' column\nprint(filtered_data)\n```\n\nSave the new dataset inside your project folder.\n\n\n```{r}\nwrite_csv(filtered_data, file = here(\"Data/Clean/country-year-gdppc.csv\"))\n```\n\nSave the file and close the project.",
+    "crumbs": [
+      "Reproducible Research",
+      "Using R"
+    ]
+  },
+  {
+    "objectID": "using-stata.html",
+    "href": "using-stata.html",
+    "title": "Using STATA",
+    "section": "",
+    "text": "Workflow and File Management\nHere’s a quick workflow for starting a new project, which incorporates the key ideas of reproducible research using Stata:",
+    "crumbs": [
+      "Reproducible Research",
+      "Using STATA"
+    ]
+  },
+  {
+    "objectID": "using-stata.html#workflow-and-file-management",
+    "href": "using-stata.html#workflow-and-file-management",
+    "title": "Using STATA",
+    "section": "",
+    "text": "Create a new folder with name peco-4980-thesis.\nOpen your text editor or Stata and create a new do file. Name it 000-setup-mac.do to prepare the project directories. Or you can download the same file from here and paste it in the folder.\nSave and run the do file within Stata to set up your project directories. Code below is just for review from the same do file.\n\n```{stata}\n* Define the base project directory | According to your system\nglobal project_dir \"/path/to/your/project/directory\"\n\n* Function to create directories\ncap program drop create_folder\nprogram define create_folder\n    args folder_path\n    if !fileexists(\"`folder_path'\") {\n        mkdir \"`folder_path'\"\n    }\nend\n\n* Create Main Folders\ncreate_folder \"$project_dir/Data\"\ncreate_folder \"$project_dir/Data/Raw\"\ncreate_folder \"$project_dir/Data/Clean\"\n\ncreate_folder \"$project_dir/Scripts\"\ncreate_folder \"$project_dir/Scripts/Stata-Scripts\"\n\ncreate_folder \"$project_dir/Outputs\"\ncreate_folder \"$project_dir/Outputs/Figures\"\ncreate_folder \"$project_dir/Outputs/Tables\"\ncreate_folder \"$project_dir/Outputs/Text\"\n\n* Print confirmation message\ndi \"Project directory and subfolders have been created successfully.\"\n```\n\nSave your raw datasets in ..Data/Raw folder.",
+    "crumbs": [
+      "Reproducible Research",
+      "Using STATA"
+    ]
+  },
+  {
+    "objectID": "using-stata.html#variable-creation-and-merging-datasets",
+    "href": "using-stata.html#variable-creation-and-merging-datasets",
+    "title": "Using STATA",
+    "section": "Variable Creation and Merging Datasets",
+    "text": "Variable Creation and Merging Datasets\nUse the file here with apporpriate modifications.",
+    "crumbs": [
+      "Reproducible Research",
+      "Using STATA"
     ]
   },
   {

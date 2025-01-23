@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Parushya">
-<meta name="dcterms.date" content="2025-01-21">
+<meta name="dcterms.date" content="2025-01-23">
 
 <title>Capstone in Political Economy</title>
 <style>
@@ -128,18 +128,29 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Course Details</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./rep-research.html" class="sidebar-item-text sidebar-link">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./rep-research.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reproducible Research</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data-management.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Management</span></a>
+  <a href="./using-R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using R</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./using-stata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using STATA</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./desc-stats-I.html" class="sidebar-item-text sidebar-link">
@@ -195,7 +206,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 21, 2025</p>
+      <p class="date">January 23, 2025</p>
     </div>
   </div>
   
@@ -212,7 +223,7 @@ ul.task-list li input[type="checkbox"] {
 <p>This web book is meant to be a one-stop resource for all data and analysis related tasks in the <strong>Capstone in Political Economy</strong> course.</p>
 <p>The pages will correspond to Data and Analysis sections in the course.</p>
 <p>The notes here will use R as a programming language and RStudio as platform (or technically known as IDE - Integrated Development Platform) of choice. However, all the concepts will also be valid for Stata users. I will include any important/relevant deviations between the two programming statistical software approaches here.</p>
-<p>You shoudl start by having the following installed on your computers:</p>
+<p>You should start by having the following installed on your computers:</p>
 <ol type="1">
 <li><p><a href="https://www.r-project.org/about.html">R</a> - Statistical Programming Language</p></li>
 <li><p><a href="https://posit.co/products/open-source/rstudio/">RStudio</a> - Interactive Development Environment for R</p></li>
@@ -831,7 +842,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
