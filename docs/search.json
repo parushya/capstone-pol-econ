@@ -146,6 +146,16 @@
     ]
   },
   {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Sandve, Geir Kjetil, Anton Nekrutenko, James Taylor, and Eivind Hovig.\n2013. “Ten Simple Rules for Reproducible Computational\nResearch.” PLOS Computational Biology 9 (10): e1003285.\nhttps://doi.org/10.1371/journal.pcbi.1003285.",
+    "crumbs": [
+      "References"
+    ]
+  },
+  {
     "objectID": "rep-research.html",
     "href": "rep-research.html",
     "title": "Reproducible Research",
