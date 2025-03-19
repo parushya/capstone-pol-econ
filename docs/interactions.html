@@ -273,7 +273,7 @@ window.Quarto = {
   <li><a href="#linear-model-1" id="toc-linear-model-1" class="nav-link" data-scroll-target="#linear-model-1">Linear Model</a></li>
   <li><a href="#predicted-outcome-plot-continuous-moderator" id="toc-predicted-outcome-plot-continuous-moderator" class="nav-link" data-scroll-target="#predicted-outcome-plot-continuous-moderator">Predicted Outcome Plot (Continuous Moderator)</a></li>
   </ul></li>
-  <li><a href="#plotting-marginal-effects" id="toc-plotting-marginal-effects" class="nav-link" data-scroll-target="#plotting-marginal-effects">Plotting Marginal Effects</a>
+  <li><a href="#marginal-effects" id="toc-marginal-effects" class="nav-link" data-scroll-target="#marginal-effects">Marginal Effects</a>
   <ul class="collapse">
   <li><a href="#binary-moderator-example" id="toc-binary-moderator-example" class="nav-link" data-scroll-target="#binary-moderator-example">Binary Moderator Example</a></li>
   <li><a href="#continuous-moderator-example" id="toc-continuous-moderator-example" class="nav-link" data-scroll-target="#continuous-moderator-example">Continuous Moderator Example</a></li>
@@ -328,18 +328,19 @@ Y = \beta_0 + \beta_1X + \beta_2Z + \beta_3(X \times Z) + \epsilon
 \frac{\partial Y}{\partial Z} = \beta_2 + \beta_3X
 \]</span></p></li>
 </ul>
-<p>Here, <span class="math inline">\(\beta_3\)</span> represents the interaction effect, indicating how the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> changes with different levels of <span class="math inline">\(Z\)</span>.</p>
+<p>Here, <span class="math inline">\(\beta_3\)</span> represents the interaction effect, indicating how the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> changes with different levels of <span class="math inline">\(Z\)</span>. Or, if <span class="math inline">\(Z\)</span> is the main IV, then how does <span class="math inline">\(X\)</span> moderates its relationship to <span class="math inline">\(Y\)</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Interactions formally quantify how relationships change across conditions.
+Key Idea
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Interactions are used to capture and test conditional hypotheses. Simplest notion of conditional hypothesis is:</p>
+<p>Interactions formally quantify how relationships change across conditions.</p>
+<p>That is, they are used to capture and test conditional hypotheses. Simplest notion of conditional hypothesis is:</p>
 <p><span class="math inline">\(H_1: \text{An increase in X is associated with an increase in Y when condition Z is met, but not when condition Z is absent}\)</span></p>
 </div>
 </div>
@@ -480,7 +481,7 @@ Code for Today’s Practice
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Download the <a href="https://drive.google.com/file/d/1po4I6VxnRaDR0i_KH2CoXp90PIPkFrX_/view?usp=sharing">R Script</a> or the <a href="https://drive.google.com/file/d/1po4I6VxnRaDR0i_KH2CoXp90PIPkFrX_/view?usp=sharing">Stata .do file</a></p>
+<p>Download the <a href="https://drive.google.com/file/d/1po4I6VxnRaDR0i_KH2CoXp90PIPkFrX_/view?usp=sharing">R Script</a> or the <a href="https://drive.google.com/file/d/15XySBosITMGvETqXh_MY3QKHi6BjEAoL/view?usp=sharing">Stata .do file</a></p>
 </div>
 </div>
 <p>In this section, let’s try interactions clearly using two types of moderators:</p>
@@ -716,9 +717,9 @@ F-statistic:  5998 on 3 and 196 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </section>
 </section>
-<section id="plotting-marginal-effects" class="level2">
-<h2 class="anchored" data-anchor-id="plotting-marginal-effects">Plotting Marginal Effects</h2>
-<p>Recall, the marginal effect of ( X ) depends explicitly on ( Z ):<br>
+<section id="marginal-effects" class="level2">
+<h2 class="anchored" data-anchor-id="marginal-effects">Marginal Effects</h2>
+<p>Recall, the marginal effect of <span class="math inline">\(X\)</span> depends explicitly on <span class="math inline">\(Z\)</span>:<br>
 <span class="math display">\[
     \frac{\partial Y}{\partial X} = \beta_1 + \beta_3Z
 \]</span> The coefficient of our main variable of interest <span class="math inline">\(X\)</span> changes at different values of Z. Let’s vizualize that.</p>
@@ -825,7 +826,7 @@ Advanced Issues
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>More recently, methodology scholarship has highlighted some finer issues with the analysis and reporting of results from multiplicative interaction models. In case your project uses interactions and you want to make it publication ready in the future, you may consult disucssion of advanced issues <a href="https://parushya.github.io/govt-8003-2024/moderation.html">here</a></p>
+<p>More recently, methodology scholarship has highlighted some finer issues with the analysis and reporting of results from multiplicative interaction models. In case your project uses interactions and you want to make it publication ready in the future, you may consult discussion of advanced issues <a href="https://parushya.github.io/govt-8003-2024/moderation.html">here</a></p>
 </div>
 </div>
 </section>
@@ -1433,7 +1434,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","loop":false,"descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false,"closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
