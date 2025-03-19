@@ -328,7 +328,7 @@ Y = \beta_0 + \beta_1X + \beta_2Z + \beta_3(X \times Z) + \epsilon
 \frac{\partial Y}{\partial Z} = \beta_2 + \beta_3X
 \]</span></p></li>
 </ul>
-<p>Here, <span class="math inline">\(\beta_3\)</span> represents the interaction effect, indicating how the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> changes with different levels of <span class="math inline">\(Z\)</span>. Or, if <span class="math inline">\(Z\)</span> is the main IV, then how does <span class="math inline">\(X\)</span> moderates its relationship to <span class="math inline">\(Y\)</span></p>
+<p>Here, <span class="math inline">\(\beta_3\)</span> represents the interaction effect, indicating how the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> changes with different levels of <span class="math inline">\(Z\)</span>. Or, if <span class="math inline">\(Z\)</span> is the main IV, then how does <span class="math inline">\(X\)</span> moderate its relationship to <span class="math inline">\(Y\)</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -341,7 +341,7 @@ Key Idea
 <div class="callout-body-container callout-body">
 <p>Interactions formally quantify how relationships change across conditions.</p>
 <p>That is, they are used to capture and test conditional hypotheses. Simplest notion of conditional hypothesis is:</p>
-<p><span class="math inline">\(H_1: \text{An increase in X is associated with an increase in Y when condition Z is met, but not when condition Z is absent}\)</span></p>
+<p><span class="math inline">\(H_1\)</span>: An increase in X is associated with an increase in Y when condition Z is met, but not when condition Z is absent.</p>
 </div>
 </div>
 <hr>
@@ -377,7 +377,7 @@ Key Idea
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>label_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="fl">5.6</span>, <span class="dv">8</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="fl">7.5</span>, <span class="fl">4.2</span>, <span class="dv">2</span>, <span class="fl">3.5</span>),</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="fu">c</span>(<span class="st">"Slope = beta[1] + beta[3]"</span>, <span class="st">"Slope = beta[1]"</span>, <span class="st">"beta[0]"</span>, <span class="st">"beta[2]"</span>),</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="fu">c</span>(<span class="st">"Slope = beta[1] + beta[3]"</span>, <span class="st">"Slope = beta[1]"</span>, <span class="st">"beta[0]"</span>, <span class="st">"+beta[2]"</span>),</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">Stability =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
@@ -1435,7 +1435,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":false});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
